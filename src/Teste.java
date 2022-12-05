@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiConsumer;import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -61,7 +62,7 @@ public class Teste {
 //		
 //		listaDeAutoEscola.forEach(System.out::println);
 		
-		System.out.println("Total de Alunos:"+ (ae.getContadorDeAlunos()+ae2.getContadorDeAlunos()));
+		System.out.println("Total de Alunos:"+ (ae.getContadorDeAlunos()+ae2.getContadorDeAlunos()+ae3.getContadorDeAlunos()+ae4.getContadorDeAlunos()));
 		
 //		listaDeAluno.stream().sorted((l1, l2)->l2.getNome().compareTo(l1.getNome())).forEach(System.out::println);;
 		
@@ -73,25 +74,50 @@ public class Teste {
 //		System.out.println();
 //		collect.forEach(System.out::println);
 		
-		listaDeAluno.stream().filter(l -> l.getTipoCarta().contains("B")).collect(Collectors.toMap(
-				l -> l.getTipoCarta(),
-				l -> l.getNome()
-				)).forEach((tipoCarta, nome)->System.out.println("Tipo da carta: "+tipoCarta+", Aluno: "+nome));;;;
+//		listaDeAluno.stream().filter(l -> l.getTipoCarta().contains("B")).collect(Collectors.toMap(
+//				l -> l.getTipoCarta(),
+//				l -> l.getNome()
+//				)).forEach((tipoCarta, nome)->System.out.println("Tipo da carta: "+tipoCarta+", Aluno: "+nome));;;;
+//		
+//		
+//		listaDeAluno.stream().filter(l -> l.getNome().contains("I")).collect(Collectors.toMap(
+//				l -> l.getNome(),
+//				l -> l.getTipoCarta()
+//				)).forEach((nome, tipoCarta )-> System.out.println("Nome: "+nome+" Tipo da Carta:"+ tipoCarta));;;
+//				
+//				
+//				int sum = (int)listaDeAutoEscola.stream().mapToDouble( l -> l.getListaAlunos().size()).sum();
+//				
+//				System.out.println();
+//				System.out.println(sum);
 		
 		
-		listaDeAluno.stream().filter(l -> l.getNome().contains("I")).collect(Collectors.toMap(
-				l -> l.getNome(),
-				l -> l.getTipoCarta()
-				)).forEach((nome, tipoCarta )-> System.out.println("Nome: "+nome+" Tipo da Carta:"+ tipoCarta));;;
-				
-				
-				int sum = (int)listaDeAutoEscola.stream().mapToDouble( l -> l.getListaAlunos().size()).sum();
-				
-				System.out.println();
-				System.out.println(sum);
+//		listaDeAluno.forEach(System.out::println);
+//		
+//		listaDeAluno.stream().map(l -> l.getCpf()).findAny().ifPresent(System.out::println);;;
+//		
+//		int sum = listaDeAluno.stream().mapToInt(l -> l.getCpf()).sum();
+//		
+//		System.out.println(sum);
+//		
+//		System.out.println();
+//		
+//		listaDeAluno.stream().collect(Collectors.toMap(l -> l.getNome(), l -> l.getCpf())).forEach((nome, cpf )->System.out.println("nome: "+nome+ ", cpf: "+cpf));;
+//		
+		List<String> collect = listaDeAluno.stream().map(l -> l.getNome()).collect(Collectors.toList());
 		
+		collect.sort((o1, o2)->o1.compareTo(o2));
 		
+		collect.forEach(System.out::println);
 		
+		collect.sort(new Comparator<String>() {
+
+			@Override
+			public int compare(String o1, String o2) {
+				// TODO Auto-generated method stub
+				return o1.compareTo(o2);
+			}
+		});
 		
 		
 		
